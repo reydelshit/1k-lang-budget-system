@@ -47,7 +47,7 @@ if (isset($_POST['logout'])) {
     session_destroy();
 
     // Redirect to the login page
-    header("Location: login.php");
+    header("Location: /seait-students/login.php");
     exit();
 }
 
@@ -150,7 +150,9 @@ $conn->close();
                 </div>
 
                 <div class="main_content">
-                    <h1>task</h1>
+                    <h1>What it is, ho? What's up?
+                        Every good girl needs a little thug
+                        Every block boy needs a little love</h1>
                 </div>
             </div>
 
