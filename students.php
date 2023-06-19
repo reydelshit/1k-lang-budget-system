@@ -95,6 +95,14 @@ $conn->close();
     .dropdown.active .dropdown-content {
         display: block;
     }
+
+
+    img {
+        margin-top: 2rem;
+        width: 80%;
+        height: 80%;
+
+    }
 </style>
 
 <script>
@@ -133,9 +141,9 @@ $conn->close();
                     <div class="dropdown">
                         <a class="dropbtn" onclick="toggleDropdown(0)">Feature</a>
                         <div class="dropdown-content">
-                            <a href="/seait-students/students/enrolment-related.php" <?php if ($current_page === 'enrolment-related.php') echo 'class="active"'; ?>>Enrolment Related</a>
-                            <a href="/seait-students/students/enrolment-guide.php" <?php if ($current_page === 'enrolment-guide.php') echo 'class="active"'; ?>>Enrolment Guide</a>
-                            <a href="/seait-students/students/library-related.php" <?php if ($current_page === 'library-related.php') echo 'class="active"'; ?>>Library Related</a>
+                            <a href="/seait-students/students/enrolment-related.php" <?php if ($current_page === 'enrolment-related.php') echo 'class="active"'; ?>>Enrollment</a>
+                            <a href="/seait-students/students/enrolment-guide.php" <?php if ($current_page === 'enrolment-guide.php') echo 'class="active"'; ?>>Enrollment Guide</a>
+                            <a href="/seait-students/students/library-related.php" <?php if ($current_page === 'library-related.php') echo 'class="active"'; ?>>Library</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -150,9 +158,10 @@ $conn->close();
                 </div>
 
                 <div class="main_content">
-                    <h1>What it is, ho? What's up?
-                        Every good girl needs a little thug
-                        Every block boy needs a little love</h1>
+                    <h1>Welcome to Seait Students Account Management System
+                    </h1>
+
+                    <img src="./assets/images/seait.jpg" alt="">
                 </div>
             </div>
 

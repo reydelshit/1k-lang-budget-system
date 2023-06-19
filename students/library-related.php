@@ -47,7 +47,7 @@ if (isset($_POST['logout'])) {
     session_destroy();
 
     // Redirect to the login page
-    header("Location: login.php");
+    header("Location: /seait-students/login.php");
     exit();
 }
 
@@ -133,9 +133,9 @@ $conn->close();
                     <div class="dropdown">
                         <a class="dropbtn" onclick="toggleDropdown(0)">Feature</a>
                         <div class="dropdown-content">
-                            <a href="/seait-students/students/enrolment-related.php" <?php if ($current_page === 'enrolment-related.php') echo 'class="active"'; ?>>Enrolment Related</a>
-                            <a href="/seait-students/students/enrolment-guide.php" <?php if ($current_page === 'enrolment-guide.php') echo 'class="active"'; ?>>Enrolment Guide</a>
-                            <a href="/seait-students/students/library-related.php" <?php if ($current_page === 'library-related.php') echo 'class="active"'; ?>>Library Related</a>
+                            <a href="/seait-students/students/enrolment-related.php" <?php if ($current_page === 'enrolment-related.php') echo 'class="active"'; ?>>Enrollment</a>
+                            <a href="/seait-students/students/enrolment-guide.php" <?php if ($current_page === 'enrolment-guide.php') echo 'class="active"'; ?>>Enrollment Guide</a>
+                            <a href="/seait-students/students/library-related.php" <?php if ($current_page === 'library-related.php') echo 'class="active"'; ?>>Library</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -146,11 +146,12 @@ $conn->close();
                             <a href="/seait-students/students/grades.php" <?php if ($current_page === 'grades.php') echo 'class="active"'; ?>>Grades</a>
                         </div>
                     </div>
-                    <a href="/seait-students/students/credentials.php" <?php if ($current_page === 'credentials.php') echo 'class="active"'; ?>>Credentials</a>
                 </div>
 
                 <div class="main_content">
-                    <h1>library</h1>
+                    <h1>Welcome to SEAIT Library</h1>
+
+                    <h2>There is no scheduled borrowed book, go to the library for more information</h2>
                 </div>
             </div>
 

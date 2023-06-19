@@ -45,6 +45,7 @@ span {
 
 .whole_page_container {
   overflow: hidden;
+  height: 100%;
 }
 
 header {
@@ -327,6 +328,7 @@ footer {
   align-items: start;
   justify-content: start;
   flex-direction: column;
+  height: 100%;
 
   /* border: 1px solid green; */
 }
@@ -384,3 +386,8 @@ footer {
 .dropdown-content a {
   display: block;
 }
+
+
+/* enrollement  */
+
+

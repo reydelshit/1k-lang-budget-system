@@ -47,7 +47,7 @@ if (isset($_POST['logout'])) {
     session_destroy();
 
     // Redirect to the login page
-    header("Location: login.php");
+    header("Location: /seait-students/login.php");
     exit();
 }
 
@@ -95,6 +95,48 @@ $conn->close();
     .dropdown.active .dropdown-content {
         display: block;
     }
+
+    table {
+        margin-top: 2rem;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .button-container {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    button {
+        margin-top: 2rem;
+        font-size: 0.8rem !important;
+
+        width: 10rem;
+        height: 2.5rem;
+        border-radius: 1.5rem;
+        border: none;
+        background-color: var(--Bright-Red);
+        color: white;
+        font-family: var(--font-family);
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .details {
+        margin-top: 2rem;
+    }
 </style>
 
 <script>
@@ -133,9 +175,9 @@ $conn->close();
                     <div class="dropdown">
                         <a class="dropbtn" onclick="toggleDropdown(0)">Feature</a>
                         <div class="dropdown-content">
-                            <a href="/seait-students/students/enrolment-related.php" <?php if ($current_page === 'enrolment-related.php') echo 'class="active"'; ?>>Enrolment Related</a>
-                            <a href="/seait-students/students/enrolment-guide.php" <?php if ($current_page === 'enrolment-guide.php') echo 'class="active"'; ?>>Enrolment Guide</a>
-                            <a href="/seait-students/students/library-related.php" <?php if ($current_page === 'library-related.php') echo 'class="active"'; ?>>Library Related</a>
+                            <a href="/seait-students/students/enrolment-related.php" <?php if ($current_page === 'enrolment-related.php') echo 'class="active"'; ?>>Enrollment</a>
+                            <a href="/seait-students/students/enrolment-guide.php" <?php if ($current_page === 'enrolment-guide.php') echo 'class="active"'; ?>>Enrollment Guide</a>
+                            <a href="/seait-students/students/library-related.php" <?php if ($current_page === 'library-related.php') echo 'class="active"'; ?>>Library</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -146,11 +188,57 @@ $conn->close();
                             <a href="/seait-students/students/grades.php" <?php if ($current_page === 'grades.php') echo 'class="active"'; ?>>Grades</a>
                         </div>
                     </div>
-                    <a href="/seait-students/students/credentials.php" <?php if ($current_page === 'credentials.php') echo 'class="active"'; ?>>Credentials</a>
                 </div>
 
                 <div class="main_content">
-                    <h1>study load</h1>
+                    <h1>Study Load</h1>
+
+                    <div class="details">
+                        <h1>Name: <?php echo $name; ?></h1>
+                        <h1>Course: Bachelor of Science in Technology</h1>
+                    </div>
+
+
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Course Code</th>
+                                    <th>Descriptive Title</th>
+                                    <th>Lecture Units</th>
+                                    <th>Laboratory Units</th>
+                                    <th>Total Units</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>IT101</td>
+                                    <td>Introduction to Programming</td>
+                                    <td>3</td>
+                                    <td>1</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>CS201</td>
+                                    <td>Data Structures and Algorithms</td>
+                                    <td>4</td>
+                                    <td>2</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>CE301</td>
+                                    <td>Database Management Systems</td>
+                                    <td>3</td>
+                                    <td>1</td>
+                                    <td>4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="button-container">
+                            <button>Download</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
