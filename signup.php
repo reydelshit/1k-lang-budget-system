@@ -34,6 +34,15 @@ if ($conn->connect_error) {
     <link rel="stylesheet" href="style.css">
 </head>
 
+<style>
+    .success {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: green;
+
+    }
+</style>
+
 <body>
 
     <div class="whole_page_container">
@@ -54,12 +63,13 @@ if ($conn->connect_error) {
         <main>
             <form class="login-form sign-up" action="signup.php" method="post">
                 <h1>Create an account</h1>
+                <label for="signup-name">Name:</label>
+                <input type="text" id="signup-name" name="signup-name" required><br><br>
+
                 <label for="signup-username">Username:</label>
                 <input type="text" id="signup-username" name="signup-username" required><br><br>
                 <label for="signup-password">Password:</label>
                 <input type="password" id="signup-password" name="signup-password" required><br><br>
-                <label for="signup-name">Name:</label>
-                <input type="text" id="signup-name" name="signup-name" required><br><br>
 
                 <?php
                 // Check if the form is submitted
@@ -84,7 +94,7 @@ if ($conn->connect_error) {
                         // Store the user ID in a session variable
                         $_SESSION['userId'] = $userId;
                 ?>
-                        <p>Account created successfully. <a href="login.php">Go back to login</a></p>
+                        <p class="success">Account created successfully. <a href="login.php">Go back to login</a></p>
                     <?php
                     } else {
                         // Error occurred
