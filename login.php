@@ -3,62 +3,55 @@
 $current_page = 'login.php';
 session_start();
 
-// Assuming you have a database connection established
-
-// Database credentials
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "seait-students";
 
-// Create a database connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check the connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if the form is submitted
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the submitted username and password
+
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Perform user authentication
-    // Query the database to check if the credentials are valid
     $sql = "SELECT * FROM accounts WHERE username = '$username' AND password = '$password'";
 
-    // Debugging: Echo the SQL query for verification
     echo $sql;
 
     $result = $conn->query($sql);
 
     if (!$result) {
-        // Error occurred
+
         echo "Error: " . $conn->error;
         exit();
     }
 
     if ($result->num_rows > 0) {
-        // Successful login
+
         $row = $result->fetch_assoc();
         $accountType = $row['account_type'];
 
-        // Update the isLoggedIn column to true
-        $userId = $row['id']; // Assuming you have a column named 'id' in your 'accounts' table
+
+        $userId = $row['id'];
         $updateSql = "UPDATE accounts SET isLoggedIn = 1 WHERE id = '$userId'";
         $conn->query($updateSql);
 
-        // Store the user ID in a session variable
+
         $_SESSION['userId'] = $userId;
 
         if ($accountType === 'student') {
-            // Redirect to students.php
+
             header("Location: students.php");
             exit();
         } else {
-            // Redirect to admin.php
+
             header("Location: admin.php");
             exit();
         }

@@ -3,63 +3,59 @@ $current_page = "features.php";
 
 session_start();
 
-// Assuming you have a database connection established
 
-// Database credentials
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "seait-students";
 
-// Create a database connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if the logout button is clicked
+
 if (isset($_POST['logout'])) {
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "seait-students";
 
-    // Create a database connection
+
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check the connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Update the isLoggedIn column to false for the logged-in user
-    $userId = $_SESSION['userId']; // Assuming you have the user ID stored in a session variable
+
+    $userId = $_SESSION['userId'];
     $updateSql = "UPDATE accounts SET isLoggedIn = 0 WHERE id = '$userId'";
     $conn->query($updateSql);
 
-    // Close the database connection
+
     $conn->close();
 
-    // Destroy the session
+
     session_start();
     session_destroy();
 
-    // Redirect to the login page
+
     header("Location: /seait-students/login.php");
     exit();
 }
 
 
-// Retrieve the user ID from the session
+
 $userId = $_SESSION['userId'];
 
-// Query the database to fetch the user's name
+
 $fetchNameSql = "SELECT name FROM accounts WHERE id = '$userId'";
 $result = $conn->query($fetchNameSql);
 
-// Check if the query was successful
 if ($result && $result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $name = $row['name'];
@@ -67,7 +63,6 @@ if ($result && $result->num_rows > 0) {
     $name = "Unknown";
 }
 
-// Close the database connection
 $conn->close();
 ?>
 

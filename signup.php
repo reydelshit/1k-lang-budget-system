@@ -3,18 +3,15 @@
 $current_page = 'signup.php';
 session_start();
 
-// Assuming you have a database connection established
 
-// Database credentials
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "seait-students";
 
-// Create a database connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check the connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -72,32 +69,30 @@ if ($conn->connect_error) {
                 <input type="password" id="signup-password" name="signup-password" required><br><br>
 
                 <?php
-                // Check if the form is submitted
+
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    // Get the submitted username, password, and name
                     $username = $_POST['signup-username'];
                     $password = $_POST['signup-password'];
                     $name = $_POST['signup-name'];
                     $accountType = 'student';
 
-                    // Insert the new user into the database
+
                     $insertSql = "INSERT INTO accounts (username, password, name, account_type) VALUES ('$username', '$password', '$name', '$accountType')";
                     if ($conn->query($insertSql) === TRUE) {
-                        // Successful signup
-                        // Retrieve the user ID of the newly created account
+
                         $userId = $conn->insert_id;
 
-                        // Update the isLoggedIn column to true
+
                         $updateSql = "UPDATE accounts SET isLoggedIn = 1 WHERE id = '$userId'";
                         $conn->query($updateSql);
 
-                        // Store the user ID in a session variable
+
                         $_SESSION['userId'] = $userId;
                 ?>
                         <p class="success">Account created successfully. <a href="login.php">Go back to login</a></p>
                     <?php
                     } else {
-                        // Error occurred
+
                     ?>
                         <p>Error: <?php echo $conn->error; ?></p>
                 <?php
