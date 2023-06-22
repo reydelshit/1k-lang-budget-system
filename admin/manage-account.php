@@ -10,58 +10,57 @@ $username = "root";
 $password = "";
 $dbname = "seait-students";
 
-// Create a database connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check the connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if the logout button is clicked
+
 if (isset($_POST['logout'])) {
     // Update the isLoggedIn column to false for the logged-in user
-    $userId = $_SESSION['userId']; // Assuming you have the user ID stored in a session variable
+    $userId = $_SESSION['userId'];
 
-    // Assuming you have a database connection established
+
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "seait-students";
 
-    // Create a database connection
+
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check the connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Update the isLoggedIn column to false for the logged-in user
+
     $updateSql = "UPDATE accounts SET isLoggedIn = 0 WHERE id = '$userId'";
     $conn->query($updateSql);
 
-    // Close the database connection
+
     $conn->close();
 
-    // Destroy the session
+
     session_start();
     session_destroy();
 
-    // Redirect to the login page
     header("Location: ../login.php");
     exit();
 }
 
 
-// Retrieve the user ID from the session
+
 $userId = $_SESSION['userId'];
 
-// Query the database to fetch the user's name
+
 $fetchNameSql = "SELECT name FROM accounts WHERE id = '$userId'";
 $result = $conn->query($fetchNameSql);
 
-// Check if the query was successful
+
 if ($result && $result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $name = $row['name'];
@@ -69,12 +68,12 @@ if ($result && $result->num_rows > 0) {
     $name = "Unknown";
 }
 
-// Retrieve all registered accounts that the admin can manage
+
 $fetchAccountsSql = "SELECT * FROM accounts WHERE account_type = 'student'";
 $accountsResult = $conn->query($fetchAccountsSql);
 
 
-// Close the database connection
+
 $conn->close();
 ?>
 
@@ -90,10 +89,10 @@ $conn->close();
 
 <script>
     function openUpdateModal(id, username, name) {
-        // Display the modal
+
         document.getElementById("modal").style.display = "block";
 
-        // Set the input field values
+        s
         document.getElementById("update-id").value = id;
         document.getElementById("update-username").value = username;
         document.getElementById("update-name").value = name;
@@ -123,17 +122,15 @@ $conn->close();
 
         <div class="sidebar">
             <a href="/seait-students/admin/manage-account.php" <?php if ($current_page === 'admin/manage-account.php') echo 'class="active"'; ?>>Manage Student Account</a>
-            <a href="/seait-students/admin/course-enrollment.php" <?php if ($current_page === 'admin/course-enrollment.php') echo 'class="active"'; ?>>Course Enrollment</a>
         </div>
 
         <div class="accounts">
             <h2>Registered Accounts:</h2>
 
 
-            <!-- Add Account Button -->
             <button onclick="openUpdateModal('', '', '')">Add Account</button>
 
-            <!-- Modal -->
+
             <div id="modal" style="display: none;">
                 <h3>Create Account</h3>
                 <form action="./functions/create-account.php" method="POST">

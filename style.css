@@ -23,15 +23,19 @@
 }
 
 body {
-  height: 100vh;
-  width: 100vw;
-  /* background-color: var(--Vary-Light-Gray); */
-  overflow-x: hidden !important;
+  /* position: relative; */
 
-  position: relative;
+  /* height: 100vh; */
+  width: 100vw;
+  background-color: var(--Vary-Light-Gray);
+ overflow-x: hidden; 
+
+
+  scroll-behavior: smooth;
 
   /* border: 1px solid orange; */
 }
+
 
 h1,
 h2 {
@@ -44,8 +48,8 @@ span {
 }
 
 .whole_page_container {
-  overflow: hidden;
-  height: 100%;
+  overflow: auto;
+  height: auto;
 }
 
 header {
@@ -188,14 +192,11 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  /* padding: 0 14rem; */
   text-align: center;
   width: 100%;
+  /* Remove fixed height */
   height: 1000px;
-
-  /* border: 1px solid green; */
 }
-
 .about p {
   margin-top: -10rem;
   line-height: 2rem;
@@ -208,19 +209,14 @@ main {
 .contact {
   display: flex;
   padding: 0 14rem;
-
   justify-content: center;
   align-items: center;
-
   background-color: var(--Bright-Red);
   color: white;
-
+  /* Remove fixed height */
   height: 40rem;
-
   position: relative;
   z-index: -10;
-
-  /* border: 1px solid orange; */
 }
 
 .contact h1 {
