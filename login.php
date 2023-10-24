@@ -6,7 +6,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "seait-students";
+$dbname = "sir_ile";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "SELECT * FROM accounts WHERE username = '$username' AND password = '$password'";
 
-    echo $sql;
 
     $result = $conn->query($sql);
 
@@ -36,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
 
         $row = $result->fetch_assoc();
-        $accountType = $row['account_type'];
 
 
         $userId = $row['id'];
@@ -46,18 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $_SESSION['userId'] = $userId;
 
-        if ($accountType === 'student') {
-
-            header("Location: students.php");
-            exit();
-        } else {
-
-            header("Location: admin.php");
-            exit();
-        }
+        header("Location: home.php");
+        exit();
     } else {
         // Invalid credentials
-        echo 'Invalid username or password';
+        $error_message = "Invalid username or password. Please try again.";
     }
 }
 
@@ -87,12 +78,12 @@ $conn->close();
             </div>
             <div class="overlay"></div>
             <div class="navigation_link__container">
-                <a href="/seait-students/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Home</a>
-                <a href="/seait-students/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>About</a>
-                <a href="/seait-students/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Contact</a>
+                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Home</a>
+                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>About</a>
+                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Contact</a>
             </div>
 
-            <button><a href="/seait-students/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Login</a></button>
+            <button><a href="/simple-simple/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Login</a></button>
         </header>
 
         <main>
@@ -102,10 +93,18 @@ $conn->close();
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
+                <div style="margin: 1rem 0;">
+                    <?php
+
+                    if (isset($error_message)) {
+                        echo $error_message;
+                    }
+                    ?>
+                </div>
 
 
                 <input class="button" type="submit" value="Login">
-                <a href="/seait-students/signup.php" <?php if ($current_page === 'sigun.php') echo 'class="active"'; ?>>Sign up</a>
+                <a href="/simple-simple/signup.php" <?php if ($current_page === 'sigun.php') echo 'class="active"'; ?>>Sign up</a>
 
 
             </form>

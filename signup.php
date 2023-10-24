@@ -7,7 +7,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "seait-students";
+$dbname = "sir_ile";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -49,12 +49,12 @@ if ($conn->connect_error) {
             </div>
             <div class="overlay"></div>
             <div class="navigation_link__container">
-                <a href="/seait-students/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Home</a>
-                <a href="/seait-students/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>About</a>
-                <a href="/seait-students/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Contact</a>
+                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Home</a>
+                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>About</a>
+                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Contact</a>
             </div>
 
-            <button><a href="/seait-students/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Login</a></button>
+            <button><a href="/simple-simple/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Login</a></button>
         </header>
 
         <main>
@@ -74,10 +74,9 @@ if ($conn->connect_error) {
                     $username = $_POST['signup-username'];
                     $password = $_POST['signup-password'];
                     $name = $_POST['signup-name'];
-                    $accountType = 'student';
 
 
-                    $insertSql = "INSERT INTO accounts (username, password, name, account_type) VALUES ('$username', '$password', '$name', '$accountType')";
+                    $insertSql = "INSERT INTO accounts (username, password, name) VALUES ('$username', '$password', '$name')";
                     if ($conn->query($insertSql) === TRUE) {
 
                         $userId = $conn->insert_id;
@@ -102,7 +101,7 @@ if ($conn->connect_error) {
 
                 <input class="button" type="submit" value="Create Account">
 
-                <a href="/seait-students/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Already have an account?</a>
+                <a href="/simple-simple/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Already have an account?</a>
             </form>
         </main>
 
