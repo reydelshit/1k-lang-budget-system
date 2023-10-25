@@ -76,7 +76,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
-    <title>SEAIT</title>
+    <title>Assignment</title>
 
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -230,7 +230,27 @@ $conn->close();
                                 echo "<div class='error_message'>Sorry, the file already exists. </div>";
                             } else {
                                 if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-                                    echo "<div class='success_message'>The file has been uploaded successfully. <br> <a class='view_file' href='$target_file'>View file</a></div>";
+                                    // Insert file details into the database
+                                    $filename = $_FILES["file"]["name"];
+                                    $filetype = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+
+                                    $conn = new mysqli("localhost", "root", "", "sir_ile");
+
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    }
+
+                                    $sql = "INSERT INTO uploaded_files (filename, filetype) VALUES ('$filename', '$filetype')";
+
+                                    if ($conn->query($sql) === TRUE) {
+                                        echo "<div class='success_message'>The file has been uploaded successfully and the details have been saved to the database. <br> <a class='view_file' href='$target_file'>View file</a></div>";
+                                    } else {
+                                        echo "<div class='error_message'>Error: " . $sql . "<br>" . $conn->error . "</div>";
+                                    }
+
+
+                                    $conn->close();
                                 } else {
                                     echo "<div class='error_message'>Sorry, there was an error uploading your file. </div>";
                                 }
