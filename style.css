@@ -93,8 +93,9 @@ header img {
   justify-content: space-around;
   width: 40%;
   padding: 0.5rem;
+  height: 8rem;
 
-  /* border: 1px solid orange; */
+  /* border: 1px solid green; */
 }
 
 .mobile__navigation__button {
