@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "UPDATE uploaded_files SET filename='$filename', filetype='$filetype' WHERE id=$fileId";
 
     if ($conn->query($sql) === TRUE) {
-        echo ' <p class="success">Updated successfully. <a href="home.php">Go back to login</a></p>';
+        echo ' <p class="success">Updated successfully. <a href="home.php">Go back to home</a></p>';
     } else {
         echo "Error updating record: " . $conn->error;
     }

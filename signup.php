@@ -49,12 +49,12 @@ if ($conn->connect_error) {
             </div>
             <div class="overlay"></div>
             <div class="navigation_link__container">
-                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Home</a>
-                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>About</a>
-                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Contact</a>
+                <a href="/oconproject/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Home</a>
+                <a href="/oconproject/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>About</a>
+                <a href="/oconproject/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Contact</a>
             </div>
 
-            <button><a href="/simple-simple/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Login</a></button>
+            <button><a href="/oconproject/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Login</a></button>
         </header>
 
         <main>
@@ -101,7 +101,7 @@ if ($conn->connect_error) {
 
                 <input class="button" type="submit" value="Create Account">
 
-                <a href="/simple-simple/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Already have an account?</a>
+                <a href="/oconproject/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Already have an account?</a>
             </form>
         </main>
 

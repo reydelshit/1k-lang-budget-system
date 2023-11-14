@@ -29,7 +29,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <a href="#contact">Contact</a>
             </div>
 
-            <button><a href="/simple-simple/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Login</a></button>
+            <button><a href="/oconproject/login.php" <?php if ($current_page === 'login.php') echo 'class="active"'; ?>>Login</a></button>
         </header>
 
         <main>

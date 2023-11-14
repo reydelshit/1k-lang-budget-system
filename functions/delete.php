@@ -36,5 +36,5 @@ if (isset($_GET['id'])) {
     echo "Invalid file ID.";
 }
 
-header("Location: /simple-simple/home.php");
+header("Location: /oconproject/home.php");
 exit();

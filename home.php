@@ -43,7 +43,7 @@ if (isset($_POST['logout'])) {
     session_destroy();
 
 
-    header("Location: /simple-simple/login.php");
+    header("Location: /oconproject/login.php");
     exit();
 }
 
@@ -267,9 +267,9 @@ $conn->close();
             </div>
             <div class="overlay"></div>
             <div class="navigation_link__container">
-                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Home</a>
-                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>About</a>
-                <a href="/simple-simple/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Contact</a>
+                <a href="/oconproject/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Home</a>
+                <a href="/oconproject/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>About</a>
+                <a href="/oconproject/index.php" <?php if ($current_page === 'index.php') echo 'class="active"'; ?>>Contact</a>
             </div>
 
             <form class="logout" method="POST" action="">
